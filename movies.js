@@ -62,6 +62,10 @@ function searchHTML(search) {
         `;
 }
 
+function goHome() {
+  window.location.href = `${window.location.origin}/movienight`
+}
+
 if (!!searchLocal) {
   searchMovies(searchLocal);
 }
