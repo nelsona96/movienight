@@ -289,7 +289,7 @@ HEADER
 }
 
 .overlay {
-  background: url(/assets/movie-theater.png), #04785760;
+  background: url(./assets/movie-theater.png), #04785760;
   background-blend-mode: color-burn;
   filter: blur(2px);
   background-repeat: no-repeat;
