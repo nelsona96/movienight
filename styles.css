@@ -1,0 +1,452 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Rochester&display=swap");
+
+/*
+
+DEFAULT / GLOBAL
+
+*/
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Montserrat", sans-serif;
+}
+
+body {
+  color: #27272a;
+}
+
+a {
+  text-decoration: none;
+  cursor: pointer;
+  color: #27272a;
+}
+
+li {
+  list-style: none;
+}
+
+section {
+  padding: 0 24px;
+}
+
+.row {
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+img {
+  width: 100%;
+}
+
+.text--highlight {
+  color: #059669;
+}
+
+.text--white {
+  color: #fff !important;
+}
+
+button {
+  cursor: pointer;
+}
+
+/*
+
+HEADER / NAV
+
+*/
+
+/* HEADER */
+
+header {
+  padding: 0 24px;
+}
+
+/* NAV */
+
+nav {
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  height: 80px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo__wrapper {
+  display: flex;
+}
+
+.logo__img--wrapper {
+  display: flex;
+  align-items: center;
+  margin-right: 4px;
+}
+
+.logo__img {
+  width: 40px;
+  color: #047857;
+}
+
+.logo__text {
+  color: #27272a;
+  font-size: 42px;
+  font-family: "Rochester", cursive;
+  user-select: none;
+  transform: translateY(-7px);
+}
+
+.nav__links {
+  display: flex;
+}
+
+.nav__link {
+  position: relative;
+  display: flex;
+  align-items: center;
+  font-size: 18px;
+  font-weight: 500;
+  margin-left: 48px;
+}
+
+.nav__link--highlight {
+  font-weight: 700;
+  cursor: default;
+}
+
+.nav__link--primary {
+  color: #fff;
+  font-weight: 600;
+  background-color: #059669;
+  padding: 8px 20px;
+  border-radius: 20px;
+  display: none;
+}
+
+.nav__link--primary:hover {
+  background-color: #047857;
+}
+
+.link__effect--black:hover:after {
+  content: "";
+  position: absolute;
+  /* bottom: 8px; */
+  bottom: 0px;
+  left: 1px;
+  width: 100%;
+  height: 2px;
+  background-color: #27272a;
+}
+
+.link__effect--white:hover:after {
+  content: "";
+  position: absolute;
+  /* bottom: 8px; */
+  bottom: 0px;
+  left: 1px;
+  width: 100%;
+  height: 2px;
+  background-color: #fff;
+}
+
+/*
+
+LANDING
+
+*/
+
+#landing {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: calc(100vh - 80px);
+}
+
+.landing__action {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  /* margin-top: 24px; */
+  margin-bottom: 48px;
+}
+
+#landing .row {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.landing__action--message {
+  color: #059669;
+  font-size: 60px;
+  font-weight: 600;
+  line-height: 1.1;
+  max-width: 800px;
+  margin-bottom: 28px;
+  text-align: center;
+  text-wrap: balance;
+}
+
+.landing__action--command {
+  font-size: 36px;
+  font-weight: 500;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.landing__logo--text {
+  font-weight: 600;
+}
+
+.landing__search {
+  display: flex;
+  transform: translateX(2px);
+}
+
+.landing__search--input {
+  font-size: 18px;
+  padding: 4px 8px;
+  margin-right: 8px;
+  border-radius: 10px;
+  border: 1px solid #71717a;
+  width: 500px;
+}
+
+.search--input {
+  outline: none;
+}
+
+.landing__search--input:hover {
+  border-color: #27272a;
+}
+
+.landing__search--input:focus {
+  border-color: #059669;
+  outline: 1px solid #059669;
+}
+
+.landing__search--button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  border-radius: 10px;
+  padding: 4px 24px;
+  background-color: #059669;
+}
+
+.landing__search--button:hover {
+  background-color: #047857;
+}
+
+.landing__search--button:active {
+  transform: translateY(1px);
+}
+
+.search-icon {
+  color: #fff;
+  width: 30px;
+}
+
+.landing__img--wrapper {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-bottom: 24px;
+}
+
+.landing__img {
+  max-width: 700px;
+}
+
+/* FIND YOUR MOVIE PAGE */
+
+/*
+
+HEADER
+
+*/
+
+#header__search {
+  height: 300px;
+  position: relative;
+  z-index: 10;
+}
+
+.overlay {
+  background: url(/assets/movie-theater.png), #04785760;
+  background-blend-mode: color-burn;
+  filter: blur(2px);
+  background-repeat: no-repeat;
+  background-size: 200%;
+  background-position-x: -1000px;
+  background-position-y: -1300px;
+  background-attachment: fixed;
+  width: 110%;
+  transform: translateY(-8px);
+  position: absolute;
+  top: 0;
+  left: -8px;
+  bottom: 0;
+  right: 0;
+  z-index: -1;
+}
+
+.header__search--wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.header__search--title {
+  font-size: 40px;
+  font-weight: 500;
+  text-align: center;
+  text-wrap: balance;
+  margin-top: 48px;
+  margin-bottom: 20px;
+}
+
+.header__search {
+  position: relative;
+  overflow: hidden;
+}
+
+.header__search--input {
+  width: 100%;
+  height: 40px;
+  min-width: 440px;
+  font-size: 18px;
+  padding: 0 60px 0 16px;
+  margin-right: 8px;
+  border-radius: 20px;
+  border: none;
+}
+
+.search-icon--wrapper {
+  width: 56px;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 0;
+  padding: 4px 16px 0 8px;
+  cursor: pointer;
+}
+
+.header__search--icon {
+  color: #059669;
+}
+
+.search-icon--wrapper:hover .header__search--icon {
+  color: #047857;
+}
+
+/*
+
+RESULTS
+
+*/
+
+.results__container {
+  padding-top: 24px;
+}
+
+.results__row {
+  max-width: 1200px;
+}
+
+.results__header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.results__info {
+  font-size: 24px;
+  padding-top: 20px;
+}
+
+.results__filter {
+  position: relative;
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+}
+
+.filter__label,
+.filter__input {
+  border: none;
+}
+
+.filter__label {
+  font-size: 18px;
+  font-weight: 600;
+  display: flex;
+  cursor:text;
+}
+
+.filter__input {
+  font-size: 18px;
+  margin-left: 16px;
+  field-sizing: content;
+  outline: none;
+}
+
+.filter__slider {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: absolute;
+  bottom: 8px;
+  border-radius: 100px;
+  height: 4px;
+  z-index: 1;
+}
+
+.filter__slider--runway {
+  width: 100%;
+  left: 0;
+  background-color: #E4E4E7;
+}
+
+.filter__slider--bar {
+  width: 50%;
+  left: 20%;
+  background-color: #059669;
+  z-index: 10;
+}
+
+.filter__slider--button {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  background-color: #fff;
+  border: 2px solid #047857;
+  border-radius: 50%;
+  cursor: grab;
+  z-index: 100;
+  transition: transform 150ms ease;
+}
+
+.filter__slider--button:nth-of-type(1) {
+  left: 0;
+}
+
+.filter__slider--button:nth-of-type(2) {
+  right: 0;
+}
+
+.filter__slider--button:hover {
+  transform: scale(1.175);
+}
+
+.filter__slider--button:active {
+  cursor: grabbing;
+  transform: scale(1.1);
+}
