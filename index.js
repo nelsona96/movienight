@@ -1,6 +1,6 @@
 const searchInput = document.querySelector(".search--input");
 const searchButton = document.querySelector(".landing__search--button");
-const findMovieButton = document.querySelector(".nav__link--find");
+const findMovieButton = document.querySelector(".nav__link--movies");
 const HTML = document.querySelector("html");
 
 HTML.style.overflow = "auto";
@@ -23,6 +23,6 @@ searchInput.addEventListener("keydown", (event) => {
 
 function searchMovie(search) {
   localStorage.setItem("search", search);
-  window.location.href = `${window.location.origin}/findyourmovie.html`;
-  console.log(search);
+  window.location.href += `movies.html`;
+//   window.location.href = `${window.location.origin}/movies.html`;
 }
