@@ -26,6 +26,7 @@ async function searchMovies(search, filter) {
   let resultsHTML = document.querySelector(".results");
   let searchTextHTML = document.querySelector(".results__info--container");
   currentSearch = search;
+  localStorage.clear("search");
 
   try {
     const response = await fetch(
@@ -33,18 +34,21 @@ async function searchMovies(search, filter) {
     );
     const movies = await response.json();
     const moviesSearch = movies.Search.slice(0, 6);
-
+    
     moviesSearch.sort((a, b) => b.Year - a.Year);
-
+    
     if (!!movies.Response) {
-      if (filter === "A_TO_Z") {
-        moviesSearch.sort((a, b) => a.Title.localeCompare(b.Title));
-      } else if (filter === "Z_TO_A") {
-        moviesSearch.sort((a, b) => b.Title.localeCompare(a.Title));
-      } else if (filter === "DATE_NEWEST") {
+      if (filter === "DATE_NEWEST") {
         moviesSearch.sort((a, b) => b.Year - a.Year);
-      } else if (filter === "DATE_OLDEST") {
+      }
+      else if (filter === "DATE_OLDEST") {
         moviesSearch.sort((a, b) => a.Year - b.Year);
+      } 
+      else if (filter === "A_TO_Z") {
+        moviesSearch.sort((a, b) => a.Title.localeCompare(b.Title));
+      } 
+      else if (filter === "Z_TO_A") {
+        moviesSearch.sort((a, b) => b.Title.localeCompare(a.Title));
       }
       searchTextHTML.innerHTML = searchHTML(search);
       resultsHTML.innerHTML = moviesSearch
@@ -83,7 +87,7 @@ function searchHTML(search) {
 
 function goHome() {
   // github method:
-  window.location.href = `${window.location.origin}/movienight`
+  window.location.href = `${window.location.origin}/movienight`;
 
   // live server method:
   // window.location.href = `${window.location.origin}/index.html`;
