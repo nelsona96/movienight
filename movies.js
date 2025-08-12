@@ -3,7 +3,6 @@ const searchButton = document.querySelector(".header__search--icon");
 const filterSelect = document.querySelector("#filter");
 let currentSearch = "";
 let searchLocal = localStorage.getItem("search");
-let movies;
 
 searchButton.addEventListener("click", (event) => {
   const searchString = searchInput.value;
@@ -30,36 +29,31 @@ async function searchMovies(search, filter) {
   localStorage.clear("search");
 
   try {
-    if (!movies) {
-      resultsHTML.innerHTML = loadingHTML();
-      const response = await fetch(
-        `https://www.omdbapi.com/?s=${search}&apikey=6dbbb021`
-      );
-      movies = await response.json();
-    }
+    resultsHTML.innerHTML = loadingHTML();
 
+    const response = await fetch(
+      `https://www.omdbapi.com/?s=${search}&apikey=6dbbb021`
+    );
+    const movies = await response.json();
     const moviesSearch = movies.Search.slice(0, 6);
-    
+
     moviesSearch.sort((a, b) => b.Year - a.Year);
-    
-      if (!!movies.Response) {
-        if (filter === "DATE_NEWEST") {
-          moviesSearch.sort((a, b) => b.Year - a.Year);
-        }
-        else if (filter === "DATE_OLDEST") {
-          moviesSearch.sort((a, b) => a.Year - b.Year);
-        } 
-        else if (filter === "A_TO_Z") {
-          moviesSearch.sort((a, b) => a.Title.localeCompare(b.Title));
-        } 
-        else if (filter === "Z_TO_A") {
-          moviesSearch.sort((a, b) => b.Title.localeCompare(a.Title));
-        }
-        searchTextHTML.innerHTML = searchHTML(search);
-        resultsHTML.innerHTML = moviesSearch
+
+    if (!!movies.Response) {
+      if (filter === "DATE_NEWEST") {
+        moviesSearch.sort((a, b) => b.Year - a.Year);
+      } else if (filter === "DATE_OLDEST") {
+        moviesSearch.sort((a, b) => a.Year - b.Year);
+      } else if (filter === "A_TO_Z") {
+        moviesSearch.sort((a, b) => a.Title.localeCompare(b.Title));
+      } else if (filter === "Z_TO_A") {
+        moviesSearch.sort((a, b) => b.Title.localeCompare(a.Title));
+      }
+      searchTextHTML.innerHTML = searchHTML(search);
+      resultsHTML.innerHTML = moviesSearch
         .map((movie) => movieHTML(movie))
         .join("");
-      }
+    }
   } catch (error) {
     searchTextHTML.firstElementChild.innerHTML = `No results for: <q class="text--highlight">${search}</q>`;
     resultsHTML.innerHTML = noResultsHTML();
@@ -95,7 +89,7 @@ function noResultsHTML() {
     <div class="no-results__img--wrapper">
       <img src="./assets/undraw__movie-scary.svg" class="no-results__img">
     </div>
-  `
+  `;
 }
 
 function loadingHTML() {
@@ -103,7 +97,7 @@ function loadingHTML() {
     <div class="results__loading">
       <i class="fas fa-spinner"></i>
     </div>
-  `
+  `;
 }
 
 function goHome() {
