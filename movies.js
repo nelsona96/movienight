@@ -3,6 +3,7 @@ const searchButton = document.querySelector(".header__search--icon");
 const filterSelect = document.querySelector("#filter");
 let currentSearch = "";
 let searchLocal = localStorage.getItem("search");
+let movies;
 
 searchButton.addEventListener("click", (event) => {
   const searchString = searchInput.value;
@@ -29,11 +30,14 @@ async function searchMovies(search, filter) {
   localStorage.clear("search");
 
   try {
-    resultsHTML.innerHTML = loadingHTML();
-    const response = await fetch(
-      `https://www.omdbapi.com/?s=${search}&apikey=6dbbb021`
-    );
-    const movies = await response.json();
+    if (!movies) {
+      resultsHTML.innerHTML = loadingHTML();
+      const response = await fetch(
+        `https://www.omdbapi.com/?s=${search}&apikey=6dbbb021`
+      );
+      movies = await response.json();
+    }
+
     const moviesSearch = movies.Search.slice(0, 6);
     
     moviesSearch.sort((a, b) => b.Year - a.Year);
