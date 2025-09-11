@@ -36,6 +36,12 @@ img {
   width: 100%;
 }
 
+.broken__img {
+  padding: 8px;
+  text-shadow: #00000033 2px 2px 2px;
+  white-space: pre-wrap;
+}
+
 section {
   padding: 0 24px;
 }

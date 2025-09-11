@@ -65,7 +65,7 @@ function movieHTML(movie) {
     <div class="movie__wrapper">
     <div class="movie">
     <div class="movie__img--wrapper">
-        <img src="${movie.Poster}" alt="${movie.Title} / No Image Found" class="movie__img" />
+        <img src="${movie.Poster}" alt="${movie.Title} \n \n  *No Image Found" onerror="this.classList.add('broken__img')" class="movie__img" />
         </div>
         <div class="movie__description">
         <h3 title="${movie.Title}" class="movie__title">${movie.Title}</h3>
