@@ -438,11 +438,15 @@ RESULTS
 .movie {
   padding-bottom: 16px;
   box-shadow: 0 2px 4px 0 #00000055;
-  border-bottom-left-radius: 8px;
-  border-bottom-right-radius: 8px;
+  border-radius: 8px;
+  overflow: hidden;
+  /* border-bottom-left-radius: 8px; */
+  /* border-bottom-right-radius: 8px; */
 }
 
 .movie__img--wrapper {
+  background-color: #eee;
+  aspect-ratio: 2 / 3;
   display: flex;
   margin-bottom: 16px;
   overflow: hidden;
@@ -458,8 +462,8 @@ RESULTS
   font-size: 18px;
   margin-bottom: 8px;
   display: -webkit-box;
-  line-clamp: 2;
-  -webkit-line-clamp: 2;
+  line-clamp: 1;
+  -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
   overflow: hidden;
   text-overflow: ellipsis;

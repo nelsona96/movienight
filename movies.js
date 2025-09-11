@@ -35,15 +35,15 @@ async function searchMovies(search, filter) {
       `https://www.omdbapi.com/?s=${search}&apikey=6dbbb021`
     );
     const movies = await response.json();
-    const moviesSearch = movies.Search.slice(0, 6);
+    const moviesSearch = movies.Search.slice(0, 9);
 
-    moviesSearch.sort((a, b) => b.Year - a.Year);
+    moviesSearch.sort((a, b) => parseInt(b.Year) - parseInt(a.Year));
 
     if (!!movies.Response) {
       if (filter === "DATE_NEWEST") {
-        moviesSearch.sort((a, b) => b.Year - a.Year);
+        moviesSearch.sort((a, b) => parseInt(b.Year) - parseInt(a.Year));
       } else if (filter === "DATE_OLDEST") {
-        moviesSearch.sort((a, b) => a.Year - b.Year);
+        moviesSearch.sort((a, b) => parseInt(a.Year) - parseInt(b.Year));
       } else if (filter === "A_TO_Z") {
         moviesSearch.sort((a, b) => a.Title.localeCompare(b.Title));
       } else if (filter === "Z_TO_A") {
@@ -65,7 +65,7 @@ function movieHTML(movie) {
     <div class="movie__wrapper">
     <div class="movie">
     <div class="movie__img--wrapper">
-        <img src="${movie.Poster}" class="movie__img" />
+        <img src="${movie.Poster}" alt="${movie.Title} / No Image Found" class="movie__img" />
         </div>
         <div class="movie__description">
         <h3 title="${movie.Title}" class="movie__title">${movie.Title}</h3>
